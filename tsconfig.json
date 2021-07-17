@@ -4,7 +4,7 @@
     "target": "ES5",
     "lib": ["dom", "es6"],
     "jsx": "react",
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "Node",
     "sourceMap": false,
     "strict": true,

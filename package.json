@@ -9,7 +9,8 @@
   },
   "author": "Contra <yo@contra.io> (https://contra.io)",
   "license": "MIT",
-  "main": "./dist/react-responsive.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "files": [
     "dist",
     "src"
@@ -37,6 +38,8 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^18.0.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
     "@stae/linters": "^1.0.0",
     "@types/chai": "^4.2.15",
     "@types/hyphenate-style-name": "^1.0.0",
@@ -56,23 +59,24 @@
     "jsdom": "^16.0.0",
     "match-media-mock": "^0.1.1",
     "mocha": "^8.0.0",
+    "node-sass": "^5.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "rollup": "^2.43.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.30.0",
     "should": "^13.2.1",
     "sinon": "^9.0.0",
     "ts-loader": "^3.5.0",
     "ts-node": "^9.1.1",
     "typedoc": "0.20.30",
-    "typescript": "^4.1.5",
-    "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.11.5"
+    "typescript": "^4.1.5"
   },
   "scripts": {
     "preversion": "npm run clean && npm run build",
     "postpublish": "npm run tag && npm run docs",
-    "build:umd": "cross-env BUILD_MODE=umd webpack",
-    "build:umd-min": "cross-env BUILD_MODE=umd-min webpack",
-    "build": "npm run build:umd && npm run build:umd-min",
+    "build": "rollup -c",
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf dist",
     "tag": "git tag -a \"v$npm_package_version\" -m \"tag version $npm_package_version\" && git push origin master --tags",
