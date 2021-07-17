@@ -1,4 +1,4 @@
-declare module "shallow-equal" {
+declare module 'shallow-equal' {
   type primitives =
     | string
     | number
